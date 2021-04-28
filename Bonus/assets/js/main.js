@@ -4,7 +4,6 @@
 var eUnNumero = true;
 while (eUnNumero) {
     var numeroCognomi = Number(prompt("Quanti cognomi vuoi inserire?"));
-
     if (!isNaN(numeroCognomi)) {
         eUnNumero = false;
     }
@@ -24,17 +23,17 @@ while (cognomiInseriti < numeroCognomi) {
     cognomiInseriti++
 }
 
+//vado a mettere solo i cognomi inseriti dall'utente in un array 
 var listaCognomiInseriti = [];
-var pinco = (listaCognomi.length) - numeroCognomi;
 
-for (i = pinco; i < listaCognomi.length; i++) {
+//con pinco vado a prendere la poszione del primo elemento inserito dall'utente
+var pinco = (listaCognomi.length) - numeroCognomi;
+for (i = pinco; i < listaCognomi.length; i++) {  //partendo dalla posizione di pinco inserisco i nomi inseriti
     listaCognomiInseriti.push(listaCognomi[i]);
 }
-//console.log(listaCognomiInseriti);
 
-
+//ordino la lista in ordine alfabetico e vado a stampare sullo schemo la lista ordinata
 var listaOrdinata = listaCognomi.sort();
-//console.log(listaOrdinata);
 
 for (var i = 0; i < listaOrdinata.length; i++) {
     var posizione = listaOrdinata[i];
@@ -42,16 +41,14 @@ for (var i = 0; i < listaOrdinata.length; i++) {
     document.getElementById("lista").innerHTML = contenutoLista + "<li>" + posizione + "</li>";
 }
 
-
+//vado ad estrapolare la posione dei cognomi inseriti dall'utente nella lista ordinata e gli inserisco in un array
 var posizioneNomiOrdinati = [];
-//stampo la posizione dei nomi inseriti nella lista ordinata
 for (var i = 0; i < listaCognomiInseriti.length; i++) {
     var giusto = listaOrdinata.indexOf(listaCognomiInseriti[i]);
-
     posizioneNomiOrdinati.push(giusto + 1)
 }
-//console.log(posizioneNomiOrdinati);
 
+//vado a comunicare al cliente in che posizione sono i cognomi da lui inseriti
 for (var i = 0; i < listaCognomiInseriti.length; i++) {
     var posizioneCognome = listaCognomiInseriti[i];
     var numeroCognome = posizioneNomiOrdinati[i];
